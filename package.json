@@ -1,0 +1,66 @@
+{
+    "name": "@findbycolor/color-library",
+    "version": "1.0.0",
+    "description": "Internal Tool to Generate Industry Color Libraries",
+    "main": "./bin/cli.js",
+    "license": "unlicensed",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "bin": {
+        "color-library": "./bin/cli.js"
+    },
+    "engines": {
+        "node": ">=14.17.3",
+        "npm": ">= 6.14.13"
+    },
+    "scripts": {
+        "build": "./node_modules/.bin/babel src -d dist",
+        "lint": "standard --fix",
+        "dev": "nodemon --watch src --watch bin --watch commands --exec npm run build",
+        "prepublish": "npm run lint && npm run build",
+        "postinstall": "npm run build",
+        "help": "node node_modules/npm-scripts-help"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FindByColor/color-library.git"
+    },
+    "bugs": {
+        "url": "https://github.com/FindByColor/color-library/issues"
+    },
+    "keywords": [],
+    "author": {
+        "name": "Peter Schmalfeldt",
+        "email": "peter@findbycolor.com",
+        "url": "https://findbycolor.com"
+    },
+    "homepage": "https://github.com/FindByColor/color-library#readme",
+    "dependencies": {
+        "babel-polyfill": "^6.26.0",
+        "chalk": "^4.1.2",
+        "cheerio": "^1.0.0-rc.10",
+        "chroma-js": "^2.1.2",
+        "color": "^4.0.1",
+        "color-harmony": "^0.3.0",
+        "md5": "^2.3.0",
+        "rimraf": "^3.0.2",
+        "sanitize-html": "^2.5.1",
+        "yargs": "^17.2.1"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-eslint": "^10.1.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "chai": "^4.3.4",
+        "mocha": "^9.1.2",
+        "nodemon": "^2.0.13",
+        "pre-commit": "^1.2.2",
+        "sinon": "^11.1.2",
+        "standard": "^16.0.4"
+    },
+    "pre-commit": [
+        "lint"
+    ]
+}

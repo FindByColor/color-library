@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"window.title": "Find By Color${separator}Color Library${separator}${activeEditorShort}",
+		"cSpell.words": [
+			"cmyk",
+			"findbycolor",
+			"grayscale",
+			"metallics",
+			"pantone"
+		],
+	}
+}
