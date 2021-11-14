@@ -7,7 +7,7 @@ Usage Instructions
 
 > After installation, you can run the following in terminal:
 
-```bash
+```properties
 color-library --options
 ```
 
@@ -32,48 +32,48 @@ Examples using CLI Params
 
 Generate All Libraries ( if no params are passed over, all are used )
 
-```console
+```properties
 color-library
 ```
 
 #### Generate RAL Library
 
-```console
+```properties
 color-library --ral
 ```
 
 #### Generate Pantone Library
 
-```console
+```properties
 color-library --pantone
 ```
 
 #### Generate Pantone Fashion Library
 
-```console
+```properties
 color-library -p -collection=fashion
 ```
 
 #### Generate Pantone Fashion Cotton Library
 
-```console
+```properties
 color-library -p -c=fashion --set=cotton
 ```
 
 #### Generate Library from Names Containing "blue"
 
-```console
+```properties
 color-library --name=blue
 ```
 
 #### Generate Library from Codes Containing "tpx"
 
-```bash
+```properties
 color-library --code=tpx
 ```
 
 #### Generate Library from HEX Colors Starting with "abc"
 
-```console
+```properties
 color-library --hex=abc
 ```
