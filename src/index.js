@@ -9,7 +9,7 @@ if (!global._babelPolyfill) {
 export function getColors (options) {
   return new Promise(async (resolve, reject) => {
     // Get RAL Colors
-    if (options.noParams || options.ral) {
+    if (options.runAll || options.ral) {
       await getRAL(options).then(success => {
         resolve(success)
       }).catch(err => {
@@ -18,7 +18,7 @@ export function getColors (options) {
     }
 
     // Get Pantone Fashion Colors
-    if ((options.noParams || options.pantone) && (!options.collection || options.collection.toLowerCase().indexOf('fashion') > -1)) {
+    if ((options.runAll || options.pantone) && (!options.collection || options.collection.toLowerCase().indexOf('fashion') > -1)) {
       await getPantoneFashion(options).then(success => {
         resolve(success)
       }).catch(err => {
@@ -27,7 +27,7 @@ export function getColors (options) {
     }
 
     // Get Pantone Industrial Colors
-    if ((options.noParams || options.pantone) && (!options.collection || options.collection.toLowerCase().indexOf('industrial') > -1)) {
+    if ((options.runAll || options.pantone) && (!options.collection || options.collection.toLowerCase().indexOf('industrial') > -1)) {
       await getPantoneIndustrial(options).then(success => {
         resolve(success)
       }).catch(err => {
@@ -36,7 +36,7 @@ export function getColors (options) {
     }
 
     // Get Pantone Graphic Design Colors
-    if ((options.noParams || options.pantone) && (!options.collection || options.collection.toLowerCase().indexOf('graphic') > -1)) {
+    if ((options.runAll || options.pantone) && (!options.collection || options.collection.toLowerCase().indexOf('graphic') > -1)) {
       await getPantoneGraphicDesign(options).then(success => {
         resolve(success)
       }).catch(err => {

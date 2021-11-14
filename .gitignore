@@ -5,6 +5,8 @@ npm-debug.log
 dist
 libraries
 *.code-workspace
+*.zip
 !.nvmrc
 !.cache
 !color-library.code-workspace
+!libraries.zip
