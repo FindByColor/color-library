@@ -12,3 +12,5 @@ Developers
 * [Usage Instructions](docs/usage-instructions.md)
 * [NPM Scripts](docs/npm-scripts.md)
 * [Troubleshooting](docs/troubleshooting.md)
+
+![Screenshot](https://findbycolor-github.s3.amazonaws.com/color-library-screenshot.png "Screenshot")
