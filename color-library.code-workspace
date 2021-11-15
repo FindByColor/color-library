@@ -10,8 +10,10 @@
 			"cmyk",
 			"findbycolor",
 			"grayscale",
+			"jszip",
 			"metallics",
-			"pantone"
+			"pantone",
+			"srggrs"
 		],
 	}
 }

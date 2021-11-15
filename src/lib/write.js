@@ -2,8 +2,15 @@ import chalk from 'chalk'
 import fs from 'fs'
 import path from 'path'
 
+// Define Library Directory
 const libraryDir = path.join(__dirname, '../', '../', 'libraries')
 
+/**
+ * Write Output to File
+ * @param {String} dir Output Directory
+ * @param {String} file Name of File
+ * @param {Object} output Data to Write to File
+ */
 export default function write (dir, file, output) {
   // Create Output JSON
   let fileData = JSON.stringify(output, null, 2)

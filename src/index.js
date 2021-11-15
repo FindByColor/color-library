@@ -5,8 +5,13 @@ if (!global._babelPolyfill) {
   require('babel-polyfill')
 }
 
-/* eslint-disable no-async-promise-executor */
+/**
+ * Get Colors from All Libraries
+ * @param {Object} options CLI Options
+ * @returns {Promise}
+ */
 export function getColors (options) {
+  /* eslint-disable no-async-promise-executor */
   return new Promise(async (resolve, reject) => {
     // Get RAL Colors
     if (options.runAll || options.ral) {
@@ -51,15 +56,18 @@ export function getColors (options) {
  * @returns {Object} colors.pantone.fashion
  */
 export function getPantoneFashion (options) {
+  // Define Library URL and Pagination Limits
   const baseURL = 'https://www.numerosamente.it/pantone-list/fashion-and-interior-designers'
   const maxPages = 14
 
+  // Async Function to Fetch External Colors
   const fetchColors = async (url, label, progress) => {
     await Pantone(url, label, progress, options).catch(err => {
       throw new Error(err)
     })
   }
 
+  // Loop Through Paginated Library Pages
   return new Promise(async (resolve) => {
     for (let i = 1; i <= maxPages; i++) {
       await fetchColors(`${baseURL}/${i}`, 'fashion-and-interior-design', `${i}/${maxPages}`)
@@ -71,18 +79,22 @@ export function getPantoneFashion (options) {
 
 /**
  * Get Pantone Colors: Industrial Designers
- * @returns {Object} colors.pantone.industrial
+ * @param {Object} options CLI Options
+ * @returns {Promise}
  */
 export function getPantoneIndustrial (options) {
+  // Define Library URL and Pagination Limits
   const baseURL = 'https://www.numerosamente.it/pantone-list/industrial-designers'
   const maxPages = 10
 
+  // Async Function to Fetch External Colors
   const fetchColors = async (url, label, progress) => {
     await Pantone(url, label, progress, options).catch(err => {
       throw new Error(err)
     })
   }
 
+  // Loop Through Paginated Library Pages
   return new Promise(async (resolve) => {
     for (let i = 1; i <= maxPages; i++) {
       await fetchColors(`${baseURL}/${i}`, 'industrial-design', `${i}/${maxPages}`)
@@ -94,17 +106,22 @@ export function getPantoneIndustrial (options) {
 
 /**
  * Get Pantone Colors: Graphic Designers
+ * @param {Object} options CLI Options
+ * @returns {Promise}
  */
 export function getPantoneGraphicDesign (options) {
+  // Define Library URL and Pagination Limits
   const baseURL = 'https://www.numerosamente.it/pantone-list/graphic-designers'
   const maxPages = 32
 
+  // Async Function to Fetch External Colors
   const fetchColors = async (url, label, progress) => {
     await Pantone(url, label, progress, options).catch(err => {
       throw new Error(err)
     })
   }
 
+  // Loop Through Paginated Library Pages
   return new Promise(async (resolve) => {
     for (let i = 1; i <= maxPages; i++) {
       await fetchColors(`${baseURL}/${i}`, 'graphic-design', `${i}/${maxPages}`)
@@ -116,6 +133,8 @@ export function getPantoneGraphicDesign (options) {
 
 /**
  * Get RAL Colors
+ * @param {Object} options CLI Options
+ * @returns {Promise}
  */
 export function getRAL (options) {
   return new Promise((resolve, reject) => {

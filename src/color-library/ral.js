@@ -1,7 +1,8 @@
 import $ from 'cheerio'
 import chalk from 'chalk'
-import sanitizeHtml from 'sanitize-html'
 import Color from 'color'
+import sanitizeHtml from 'sanitize-html'
+
 import { Harmonizer } from 'color-harmony'
 
 import nearestColor from '../lib/nearest-color'
@@ -9,7 +10,13 @@ import write from '../lib/write'
 
 import { getDOM, leftPad, makeRequest, titleCase } from '../lib/utils'
 
-export default (url, options) => {
+/**
+ * RAL Library
+ * @param {String} url URL of Library
+ * @param {Object} options CLI Options
+ * @returns {Promise}
+ */
+export default function RAL (url, options) {
   return makeRequest(url).then(data => {
     let html = data.html || null
 
@@ -121,7 +128,9 @@ export default (url, options) => {
       const file = `${hex.replace('#', '')}.json`
 
       // Write Output
-      write(dir, file, output)
+      if (!options.dry) {
+        write(dir, file, output)
+      }
     })
 
     // Let Script know we are Done

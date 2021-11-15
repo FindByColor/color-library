@@ -6,6 +6,14 @@ import Color from 'color'
 
 import namedColors from './named-colors'
 
+/**
+ * Get Nearest Named Color to Provided Hex Code
+ * @param {String} hex HEX Code
+ * @param {String} space Color Space
+ * @param {String} label Label to use for Output
+ * @param {String} progress Progress Bard text
+ * @returns {Object} Nearest Color
+ */
 export default function nearestColor (hex, space, label, progress) {
   const activeColor = chroma(hex)
   const colorObj = Color(hex)

@@ -16,11 +16,12 @@
     },
     "scripts": {
         "build": "./node_modules/.bin/babel src -d dist",
+        "test": "npm run -s lint",
         "lint": "standard --fix",
         "dev": "nodemon --watch src --watch bin --watch commands --exec npm run build",
         "prepublish": "npm run lint && npm run build",
         "postinstall": "npm run build",
-        "help": "node node_modules/npm-scripts-help"
+        "pack": "jszip -c .jszip.json &> /dev/null && echo '✓ Libraries Packed'"
     },
     "repository": {
         "type": "git",
@@ -43,7 +44,6 @@
         "chroma-js": "^2.1.2",
         "color": "^4.0.1",
         "color-harmony": "^0.3.0",
-        "cross-zip": "^4.0.0",
         "md5": "^2.3.0",
         "rimraf": "^3.0.2",
         "sanitize-html": "^2.5.1",
@@ -55,6 +55,7 @@
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
         "chai": "^4.3.4",
+        "jszip-cli": "^1.4.24",
         "mocha": "^9.1.2",
         "nodemon": "^2.0.13",
         "pre-commit": "^1.2.2",

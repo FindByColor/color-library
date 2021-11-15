@@ -15,15 +15,16 @@ CLI Options
 ---
 
 ```console
-  -p, --pantone     Generate Pantone Color Library  [boolean] [default: false]
-  -r, --ral         Generate RAL Color Library      [boolean] [default: false]
-  -c, --collection  Filter Colors by Collection       [string] [default: null]
-  -s, --set         Filter Colors by Set              [string] [default: null]
-  -n, --name        Filter Colors by Name             [string] [default: null]
-  -x, --code        Filter Colors by Code             [string] [default: null]
-  -h, --hex         Filter Colors by HEX              [string] [default: null]
-      --help        Show help                                        [boolean]
-      --version     Show version number                              [boolean]
+  -p, --pantone         Generate Pantone Color Library  [boolean] [default: false]
+  -r, --ral             Generate RAL Color Library      [boolean] [default: false]
+  -c, --collection      Filter Colors by Collection       [string] [default: null]
+  -s, --set             Filter Colors by Set              [string] [default: null]
+  -n, --name            Filter Colors by Name             [string] [default: null]
+  -x, --code            Filter Colors by Code             [string] [default: null]
+  -h, --hex             Filter Colors by HEX              [string] [default: null]
+      --dry, --dry-run  Dry Run Only                    [boolean] [default: false]
+      --help            Show help                                        [boolean]
+      --version         Show version number                              [boolean]
 ```
 
 
@@ -76,4 +77,10 @@ color-library --code=tpx
 
 ```console
 color-library --hex=abc
+```
+
+#### Process Libraries but don't write to disk
+
+```console
+color-library --dry-run
 ```

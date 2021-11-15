@@ -62,6 +62,12 @@ const cli = yargs
       describe: 'Filter Colors by HEX',
       type: 'string',
       default: null
+    },
+    dry: {
+      alias: 'dry-run',
+      describe: 'Dry Run Only',
+      type: 'boolean',
+      default: false
     }
   })
   .command('*', 'Run Color Library Generator')
@@ -74,6 +80,7 @@ const cli = yargs
   .example('color-library --name=blue', 'Generate Library from Names Containing "blue"')
   .example('color-library --code=tpx', 'Generate Library from Codes Containing "tpx"')
   .example('color-library --hex=abc', 'Generate Library from HEX Colors Starting with "abc"')
+  .example('color-library --dry-run', 'Dry Run Only ( Does Not Update Library )')
   .help('help')
   .epilogue(`${chalk.bold.cyan('Need Help?')} https://github.com/FindByColor/color-library`)
   .version().argv

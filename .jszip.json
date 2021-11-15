@@ -1,0 +1,8 @@
+{
+  "entities": [
+    "libraries"
+  ],
+  "options": {
+    "output": "libraries.zip"
+  }
+}

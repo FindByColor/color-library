@@ -1,3 +1,6 @@
+/**
+ * Internal Named Colors for Grouping Similar Colors
+ */
 const namedColors = [
   {
     name: 'Black',

@@ -1,7 +1,8 @@
 import $ from 'cheerio'
 import chalk from 'chalk'
-import sanitizeHtml from 'sanitize-html'
 import Color from 'color'
+import sanitizeHtml from 'sanitize-html'
+
 import { Harmonizer } from 'color-harmony'
 
 import nearestColor from '../lib/nearest-color'
@@ -9,7 +10,15 @@ import write from '../lib/write'
 
 import { getDOM, getPantoneSet, leftPad, makeRequest, titleCase } from '../lib/utils'
 
-export default (url, label, progress, options) => {
+/**
+ * Pantone Library
+ * @param {String} url URL of Library
+ * @param {String} label Label for Collection
+ * @param {String} progress Progress Indicator
+ * @param {Object} options CLI Options
+ * @returns {Promise}
+ */
+export default function Pantone (url, label, progress, options) {
   return makeRequest(url).then(data => {
     let html = data.html || null
 
@@ -136,7 +145,9 @@ export default (url, label, progress, options) => {
       const file = `${hex.replace('#', '')}.json`
 
       // Write Output
-      write(dir, file, output)
+      if (!options.dry) {
+        write(dir, file, output)
+      }
     })
 
     // Let Script know we are Done

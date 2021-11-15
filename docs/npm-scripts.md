@@ -12,3 +12,4 @@ NPM Scripts:
 | `npm run build`       | Build & Compile Color Library                        |
 | `npm run dev`         | Watches for Code Changes and re-runs `npm run build` |
 | `npm run lint`        | Tests Javascript Code against Linting Rules          |
+| `npm run pack`        | Package `libraries` folder into `libraries.zip`      |
