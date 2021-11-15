@@ -57,7 +57,7 @@ Property       | Definition                | Example
 `harmony`
 ---
 
-> Harmonies are precalculated complimentary colors using color science. These use predefined rotations around a color wheel to create color combination. Properties ending in `CW` mean there was a Clockwise rotation applied.  `CCW` means a Counter Clockwise rotation was applied.
+> Harmonies are precalculated complementary colors using color science. These use predefined rotations around a color wheel to create color combinations. Properties ending in `CW` indicate a Clockwise rotation applied, and' CCW` means a Counter Clockwise rotation.
 
 Property                        | Degrees                         | Example
 --------------------------------|---------------------------------|----------------------
@@ -82,7 +82,7 @@ Property                        | Degrees                         | Example
 
 **Complementary:**
 
-> Two colors are complementary when they are each on opposite ends of color wheel.
+> Two colors are complementary when they are each on opposite ends of the color wheel.
 
 **Split Complementary:**
 
@@ -94,19 +94,19 @@ Property                        | Degrees                         | Example
 
 **Clash:**
 
-> Differing shades of colors that work less well together.
+> Clashes are differing shades of colors that do not work well together.
 
 **Tetrad:**
 
-> Tetradic color palettes use four colors, a pair of complementary color pairs. Tetrad colors can be found by putting a square or rectangle on the color wheel.
+> Tetradic color palettes use four colors, a pair of complementary color pairs. Tetrad colors are found by putting a square or rectangle on the color wheel.
 
 **Four Tone:**
 
-> A double complementary scheme is when two hues (colors) are next to each other on the color wheel and are paired with two adjacent hues on the opposite side.
+> A Four Tone ( AKA Double Complementary ) scheme is when two hues are next to each other on the color wheel and paired with two adjacent hues on the opposite side.
 
 **Five Tone:**
 
-> Primary color and four tetradic colors.
+> Primary color combined with four tetradic colors.
 
 **Six Tone:**
 
@@ -114,7 +114,7 @@ Property                        | Degrees                         | Example
 
 **Neutral:**
 
-> These are colors with the same saturation and brightness from size 15° rotations on the color wheel.
+> These are colors with the same saturation and brightness from colors using 15° rotations on the color wheel.
 
 **Analog:**
 
