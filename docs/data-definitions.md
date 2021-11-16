@@ -100,7 +100,7 @@ Property        | Definition                   | Example
 `harmony`
 ---
 
-> Harmonies are precalculated complementary colors using color science. These use predefined rotations around a color wheel to create color combinations. Properties ending in `CW` indicate a Clockwise rotation applied, and' CCW` means a Counter Clockwise rotation.
+> Harmonies are precalculated complementary colors using color science. These use predefined rotations around a color wheel to create color combinations. Properties ending in `CW` indicate a Clockwise rotation applied, and `CCW` means a Counter Clockwise rotation.
 
 Property                        | Degrees ( as indexed in array ) | Example
 --------------------------------|---------------------------------|----------------------
