@@ -1,6 +1,6 @@
 {
     "name": "@findbycolor/color-library",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Internal Tool to Generate Industry Color Libraries",
     "main": "./bin/cli.js",
     "license": "unlicensed",
@@ -42,7 +42,6 @@
         "chalk": "^4.1.2",
         "cheerio": "^1.0.0-rc.10",
         "chroma-js": "^2.1.2",
-        "color": "^4.0.1",
         "color-harmony": "^0.3.0",
         "md5": "^2.3.0",
         "rimraf": "^3.0.2",

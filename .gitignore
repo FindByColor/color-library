@@ -6,7 +6,11 @@ dist
 libraries
 *.code-workspace
 *.zip
+*.json
 !.nvmrc
 !.cache
 !color-library.code-workspace
 !libraries.zip
+!.jszip.json
+!package.json
+!package-lock.json

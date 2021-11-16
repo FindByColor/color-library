@@ -1,24 +1,24 @@
 import $ from 'cheerio'
 import chalk from 'chalk'
-import Color from 'color'
 import sanitizeHtml from 'sanitize-html'
 
-import { Harmonizer } from 'color-harmony'
-
-import nearestColor from '../lib/nearest-color'
+import model from '../lib/model'
 import write from '../lib/write'
 
-import { getDOM, getPantoneSet, leftPad, makeRequest, titleCase } from '../lib/utils'
+import { getDOM, getPantoneSet, leftPad, makeRequest } from '../lib/utils'
+
+// Define Library Name
+const libraryCode = 'pantone'
 
 /**
  * Pantone Library
  * @param {String} url URL of Library
- * @param {String} label Label for Collection
+ * @param {String} collection Label for Collection
  * @param {String} progress Progress Indicator
  * @param {Object} options CLI Options
  * @returns {Promise}
  */
-export default function Pantone (url, label, progress, options) {
+export default function Pantone (url, collection, progress, options) {
   return makeRequest(url).then(data => {
     let html = data.html || null
 
@@ -42,7 +42,6 @@ export default function Pantone (url, label, progress, options) {
     $rows.each((index, element) => {
       const tds = $(element).find('td')
       const code = $(tds[0]).text() || null
-      const rgb = $(tds[1]).text() || null
       const hex = $(tds[2]).text() || null
       const name = $(tds[3]).text() || null
 
@@ -99,52 +98,25 @@ export default function Pantone (url, label, progress, options) {
         }
       }
 
-      // Prepare Color for Output
-      const color = Color(rgb)
-      const harmonizer = new Harmonizer()
+      // Calculate Progress
       const percentComplete = Math.round(((index + 1) / $rows.length) * 100)
-      const harmony = harmonizer.harmonizeAll(hex)
-      const nearest = nearestColor(hex, 'Pantone', titleCase(label.replace(/-/g, ' ')), hasFilters
+      const progressLabel = hasFilters
         ? `Filters => ${filtering.join(' | ')}`
-        : `Page ${progress} ${leftPad(percentComplete, 3, ' ')}%`)
+        : `Page ${progress} ${leftPad(percentComplete, 3, ' ')}%`
 
-      // Generate Output
-      const output = {
-        library: [
-          {
-            space: 'pantone',
-            collection: label,
-            set: set,
-            color: {
-              code: code,
-              name: titleCase(name)
-            }
-          }
-        ],
-        color: {
-          hex: hex,
-          rgb: color.object(),
-          cmyk: color.cmyk().round().object(),
-          hsl: color.hsl().round().object(),
-          cssHSL: color.hsl().round().toString(),
-          cssRGB: color.toString()
-        },
-        harmony: harmony,
-        nearest: nearest,
-        meta: {
-          grayscale: color.grayscale().hex(),
-          inverse: color.negate().hex(),
-          isDark: color.isDark(),
-          isLight: color.isLight(),
-          luminosity: color.luminosity()
-        }
+      // Generate Output from Model
+      const output = model(libraryCode, collection, set, code, name, hex, progressLabel)
+
+      // Make sure we got output
+      if (!output) {
+        return false
       }
 
       // Create File Info
-      const dir = `pantone/${label}/${set}`
+      const dir = `${libraryCode}/${collection}/${set}`
       const file = `${hex.replace('#', '')}.json`
 
-      // Write Output
+      // Write Output if not Dry Run
       if (!options.dry) {
         write(dir, file, output)
       }
@@ -153,7 +125,7 @@ export default function Pantone (url, label, progress, options) {
     // Let Script know we are Done
     return true
   }).catch(err => {
-    console.log(`\n${chalk.bold.red('✖ ERROR:')} RAL Parser\n`)
+    console.log(`\n${chalk.bold.red('✖ ERROR:')} ${libraryCode} parser\n`)
     console.error(err)
   })
 }

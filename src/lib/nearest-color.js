@@ -1,31 +1,41 @@
 'use strict'
 
 import chalk from 'chalk'
-import chroma from 'chroma-js'
-import Color from 'color'
+import Chroma from 'chroma-js'
+
+import { titleCase } from './utils'
 
 import namedColors from './named-colors'
 
 /**
  * Get Nearest Named Color to Provided Hex Code
  * @param {String} hex HEX Code
- * @param {String} space Color Space
- * @param {String} label Label to use for Output
+ * @param {String} library Color Library
+ * @param {String} collection Collection Name
  * @param {String} progress Progress Bard text
  * @returns {Object} Nearest Color
  */
-export default function nearestColor (hex, space, label, progress) {
-  const activeColor = chroma(hex)
-  const colorObj = Color(hex)
-  const textColor = colorObj.isDark() ? '#FFFFFF' : '#000000'
+export default function nearestColor (hex, library, collection, progress) {
+  const chroma = Chroma(hex)
+  const textColor = chroma.luminance() <= 0.5 ? '#FFFFFF' : '#000000'
+
+  // Title Case Library
+  library = titleCase(library.replace(/-/g, ' '))
+
+  // Title Case Collection
+  if (collection) {
+    collection = titleCase(collection.replace(/-/g, ' '))
+  } else {
+    collection = 'Colors'
+  }
 
   // Store Comparison Results
   const results = []
 
   // Generate Comparison of Color against Named Reference Colors
   namedColors.forEach(color => {
-    const deltaE = chroma.deltaE(activeColor, chroma(color.hex))
-    const distance = chroma.distance(activeColor, chroma(color.hex))
+    const deltaE = Chroma.deltaE(chroma, Chroma(color.hex))
+    const distance = Chroma.distance(chroma, Chroma(color.hex))
 
     // Push Color Comparison
     results.push({
@@ -73,7 +83,7 @@ export default function nearestColor (hex, space, label, progress) {
   }
 
   // Generate Pretty Output
-  console.log(`${chalk.cyan(space)} ${label} ${chalk.dim(progress)} ${chalk.dim(':')} ${chalk.bgHex(hex).hex(textColor).bold(' ' + hex + ' ')} <=> ${chalk.bgHex(matchHex).hex(textColor).bold(' ' + matchHex + ' ')} ${chalk.dim('ΔE')} ${comparison}`)
+  console.log(`${chalk.cyan(library)} ${collection} ${chalk.dim(progress)} ${chalk.dim(':')} ${chalk.bgHex(hex).hex(textColor).bold(' ' + hex + ' ')} <=> ${chalk.bgHex(matchHex).hex(textColor).bold(' ' + matchHex + ' ')} ${chalk.dim('ΔE')} ${comparison}`)
 
   // Send back best result
   return results[0]

@@ -10,10 +10,11 @@ Data Definitions
 **Table of Contents:**
 
 * [library](#library)
-* [color](#color)
+* [meta](#meta)
+* [css](#css)
+* [space](#space)
 * [harmony](#harmony)
 * [nearest](#nearest)
-* [meta](#meta)
 
 
 `library`
@@ -30,36 +31,78 @@ Property                | Definition                          | Example
 `library[0].color.code` | Code used to refer to Color         | `14-6017 TCX`
 `library[0].color.name` | Name used to refer to Color         | `Neptune Green`
 
-`color`
+`meta`
 ---
 
-> This is an object containing alternative ways to use the color.
+> This is an internal object of possibly helpful information about the color.
 
-Property       | Definition                | Example
----------------|---------------------------|----------------------
-`color.hex`    | Hex Code                  | ![#7FBB9E](https://via.placeholder.com/20/7FBB9E/000000?text=+) `#7FBB9E`
-`color.rgb`    | RGB Color Values          | `--`
-`color.rgb.r`  | Amount of Red `0-255`     | `127`
-`color.rgb.g`  | Amount of Green `0-255`   | `187`
-`color.rgb.b`  | Amount of Blue `0-255`    | `158`
-`color.cmyk`   | CMYK Color Values         | `--`
-`color.cmyk.c` | Percent of Cyan           | `32`
-`color.cmyk.m` | Percent of Magenta        | `0`
-`color.cmyk.y` | Percent of Yellow         | `16`
-`color.cmyk.k` | Percent of Black          | `27`
-`color.hsl`    | HSL Color Values          | `--`
-`color.hsl.h`  | Degree of Hue             | `151`
-`color.hsl.s`  | Percent of Saturation     | `31`
-`color.hsl.l`  | Percent of Lightness      | `62`
-`color.cssHSL` | CSS Representation of HSL | `hsl(151, 31%, 62%)`
-`color.cssRGB` | CSS Representation of RGB | `rgb(127, 187, 158)`
+Property          | Definition                                 | Example
+------------------|--------------------------------------------|------------------------------
+`meta.isDark`     | Is this a Dark Color                       | `false`
+`meta.isLight`    | Is this a Light Color                      | `true`
+`meta.luminosity` | Luminance of Color: `0` = Dark `1` = Light | `0.42521295857216795`
+
+`css`
+---
+
+> CSS values for color
+
+Property   | Definition                       | Example
+-----------|----------------------------------|------------------------------
+`css.name` | HTML Color Name ( if available ) | `green`
+`css.hex`  | HTML CSS HEX Code                | ![#7FBB9E](https://via.placeholder.com/20/7FBB9E/000000?text=+) `#7FBB9E`
+`css.hsl`  | HTML CSS HLS Code                | `hsl(151,30.61%,61.57%)`
+`css.rgb`  | HTML CSS RGB Code                | `rgb(127,187,158)`
+
+`space`
+---
+
+> A collection of values for different Color Space values for this color
+
+Property        | Definition                   | Example
+----------------|------------------------------|----------------------
+`space.cmyk`    | CMYK Color Space Array       | `--`
+`space.cmyk[0]` | Percent of Cyan `0-1`        | `0.320855614973262`
+`space.cmyk[1]` | Percent of Magenta `0-1`     | `0`
+`space.cmyk[2]` | Percent of Yellow `0-1`      | `0.15508021390374324`
+`space.cmyk[3]` | Percent of Black `0-1`       | `0.2666666666666667`
+`space.hcl`     | HCL Color Space Array        | `--`
+`space.hcl[0]`  | Degree of Hue `0-360`        | `161.53158041255017`
+`space.hcl[1]`  | Range of Chroma `0-150`      | `27.049091053544668`
+`space.hcl[2]`  | Range of Lightness `0-150`   | `71.22770039535155`
+`space.hex`     | Hex Code                     | ![#7FBB9E](https://via.placeholder.com/20/7FBB9E/000000?text=+) `#7FBB9E`
+`space.hsi`     | HSI Color Space Array        | `--`
+`space.hsi[0]`  | Degree of Hue `0-360`        | `151.10252169049537`
+`space.hsi[1]`  | Percent of Saturation `0-1`  | `0.19279661016949157`
+`space.hsi[2]`  | Percent of Intensity `0-1`   | `0.6169934640522876`
+`space.hsl`     | HSL Color Space Array        | `--`
+`space.hsl[0]`  | Degree of Hue `0-360`        | `151`
+`space.hsl[1]`  | Percent of Saturation `0-1`  | `0.3061224489795918`
+`space.hsl[2]`  | Percent of Lightness `0-1`   | `0.615686274509804`
+`space.hsl[3]`  | Alpha Transparency `1`       | `1`
+`space.hsv`     | HSV Color Space Array        | `--`
+`space.hsv[0]`  | Degree of Hue `0-360`        | `151`
+`space.hsv[1]`  | Percent of Saturation `0-1`  | `0.32085561497326204`
+`space.hsv[2]`  | Percent of Value `0-1`       | `0.7333333333333333`
+`space.lab`     | LAB Color Space Array        | `--`
+`space.lab[0]`  | Lightness `0-100`            | `71.22770039535155`
+`space.lab[1]`  | Red/Green Value `-128-127`   | `-25.656019689009046`
+`space.lab[2]`  | Blue/Yellow Value `-128-127` | `8.568662704304009`
+`space.lch`     | LCH Color Space Array        | `--`
+`space.lch[0]`  | Range of Lightness `0-150`   | `71.22770039535155`
+`space.lch[1]`  | Range of Chroma `0-150`      | `27.049091053544668`
+`space.lch[2]`  | Degree of Hue `0-360`        | `161.53158041255017`
+`space.rgb`     | RGB Color Space Array        | `--`
+`space.rgb.r`   | Amount of Red `0-255`        | `127`
+`space.rgb.g`   | Amount of Green `0-255`      | `187`
+`space.rgb.b`   | Amount of Blue `0-255`       | `158`
 
 `harmony`
 ---
 
 > Harmonies are precalculated complementary colors using color science. These use predefined rotations around a color wheel to create color combinations. Properties ending in `CW` indicate a Clockwise rotation applied, and' CCW` means a Counter Clockwise rotation.
 
-Property                        | Degrees                         | Example
+Property                        | Degrees ( as indexed in array ) | Example
 --------------------------------|---------------------------------|----------------------
 `harmony.complementary`         | 0°, 180°                        | ![#7fbb9e](https://via.placeholder.com/20/7fbb9e/000000?text=+) ![#bb7f9c](https://via.placeholder.com/20/bb7f9c/000000?text=+)
 `harmony.splitComplementary`    | 0°, 150°, 320°                  | ![#7fbb9e](https://via.placeholder.com/20/7fbb9e/000000?text=+) ![#bb7fba](https://via.placeholder.com/20/bb7fba/000000?text=+) ![#88bb7f](https://via.placeholder.com/20/88bb7f/000000?text=+)
@@ -147,15 +190,3 @@ Delta E | Perception
 11-49   | Colors are more similar than opposite
 100     | Colors are exact opposite
 
-`meta`
----
-
-> This is an internal object of possibly helpful information about the color.
-
-Property          | Definition                                 | Example
-------------------|--------------------------------------------|------------------------------
-`meta.grayscale`  | Color Converted to Grayscale               | ![#A6A6A6](https://via.placeholder.com/20/A6A6A6/000000?text=+) `#A6A6A6`
-`meta.inverse`    | Inverted Color                             | ![#804461](https://via.placeholder.com/20/804461/000000?text=+) `#804461`
-`meta.isDark`     | Is this a Dark Color                       | `false`
-`meta.isLight`    | Is this a Light Color                      | `true`
-`meta.luminosity` | Luminance of Color: `0` = Dark `1` = Light | `0.42521295857216795`

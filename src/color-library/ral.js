@@ -1,14 +1,14 @@
 import $ from 'cheerio'
 import chalk from 'chalk'
-import Color from 'color'
 import sanitizeHtml from 'sanitize-html'
 
-import { Harmonizer } from 'color-harmony'
-
-import nearestColor from '../lib/nearest-color'
+import model from '../lib/model'
 import write from '../lib/write'
 
-import { getDOM, leftPad, makeRequest, titleCase } from '../lib/utils'
+import { getDOM, leftPad, makeRequest } from '../lib/utils'
+
+// Define Library Name
+const libraryCode = 'ral'
 
 /**
  * RAL Library
@@ -82,52 +82,25 @@ export default function RAL (url, options) {
         }
       }
 
-      // Prepare Color for Output
-      const color = Color(hex)
-      const harmonizer = new Harmonizer()
+      // Calculate Progress
       const percentComplete = Math.round(((index + 1) / $rows.length) * 100)
-      const harmony = harmonizer.harmonizeAll(hex)
-      const nearest = nearestColor(hex, 'RAL', 'Colors', hasFilters
+      const progressLabel = hasFilters
         ? `Filters => ${filtering.join(' | ')}`
-        : `Page 1/1 ${leftPad(percentComplete, 3, ' ')}%`)
+        : `Page 1/1 ${leftPad(percentComplete, 3, ' ')}%`
 
-      // Generate Output
-      const output = {
-        library: [
-          {
-            space: 'ral',
-            collection: null,
-            set: null,
-            color: {
-              code: code,
-              name: titleCase(name)
-            }
-          }
-        ],
-        color: {
-          hex: hex,
-          rgb: color.object(),
-          cmyk: color.cmyk().round().object(),
-          hsl: color.hsl().round().object(),
-          cssHSL: color.hsl().round().toString(),
-          cssRGB: color.toString()
-        },
-        harmony: harmony,
-        nearest: nearest,
-        meta: {
-          grayscale: color.grayscale().hex(),
-          inverse: color.negate().hex(),
-          isDark: color.isDark(),
-          isLight: color.isLight(),
-          luminosity: color.luminosity()
-        }
+      // Generate Output from Model
+      const output = model(libraryCode, null, null, code, name, hex, progressLabel)
+
+      // Make sure we got output
+      if (!output) {
+        return false
       }
 
       // Create File Info
-      const dir = 'pal'
+      const dir = libraryCode
       const file = `${hex.replace('#', '')}.json`
 
-      // Write Output
+      // Write Output if not Dry Run
       if (!options.dry) {
         write(dir, file, output)
       }
@@ -136,7 +109,7 @@ export default function RAL (url, options) {
     // Let Script know we are Done
     return true
   }).catch(err => {
-    console.log(`\n${chalk.bold.red('✖ ERROR:')} RAL Parser\n`)
+    console.log(`\n${chalk.bold.red('✖ ERROR:')} ${libraryCode} parser\n`)
     console.error(err)
   })
 }

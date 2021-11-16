@@ -184,7 +184,7 @@ export function getPantoneSet (code) {
 
     // https://www.pantone.com/pantone-skintone-guide
     case 'SP':
-      label = 'pantone-skin-tone'
+      label = 'skin-tone'
       break
 
     case 'PQ':

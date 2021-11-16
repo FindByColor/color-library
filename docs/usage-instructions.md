@@ -11,6 +11,8 @@ Usage Instructions
 color-library --options
 ```
 
+**NOTE:** This will CLI tool will create a new `libraries` directory if it does not already exist.  If it does, it will overwrite whatever is in that directory with new output.  We do not include this `libraries` folder in the repo, as there are close to 50,000 files in that directory. You will, however, find a `libraries.zip` file in the root of this repository, which contains a packed version of that folder.  You can safely unpack it locally as long as you do not rename the folder.
+
 CLI Options
 ---
 
