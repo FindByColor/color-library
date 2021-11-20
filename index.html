@@ -1,0 +1,156 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Viewer</title>
+    <link rel="stylesheet" href="viewer/css/style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="color-picker">
+        <form id="image-upload" class="drop-zone" action="" enctype="multipart/form-data">
+          <div class="thumbnail">
+            <div class="preview"></div>
+            <div class="marker"></div>
+
+            <img id="image" src="viewer/img/default.jpg" />
+
+            <div class="upload-image">
+              <input type="file" name="file" id="file" accept="image/*" onchange="updateImage()">
+              <label for="file">Upload Image</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="color-data">
+        <div class="library info-block">
+          <div class="library-match" id="library-match-1">
+            <div class="title">RAL</div>
+            <div class="color-code">RAL-3022</div>
+            <div class="color-name">Salmon Pink</div>
+          </div>
+
+          <div class="library-match" id="library-match-2">
+            <div class="title">RAL</div>
+            <div class="color-code">RAL-3022</div>
+            <div class="color-name">Salmon Pink</div>
+          </div>
+
+          <div class="library-match" id="library-match-3">
+            <div class="title">RAL</div>
+            <div class="color-code">RAL-3022</div>
+            <div class="color-name">Salmon Pink</div>
+          </div>
+        </div>
+
+        <div class="nearest info-block">
+          <div class="title">Nearest</div>
+          <div class="nearest-name" id="nearest-match-name">Flame Pea</div>
+        </div>
+
+        <div class="nearest-colors info-block">
+          <div class="color-block-large" id="color-selected"></div>
+          <div class="color-block-large" id="color-library"></div>
+          <div class="color-block-large" id="color-nearest"></div>
+        </div>
+
+        <div class="harmony">
+          <div class="col">
+            <div class="harmony-name">Complementary</div>
+            <div class="harmony-colors complementary">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+            </div>
+
+            <div class="harmony-name">Split Comp.</div>
+            <div class="harmony-colors split-complementary">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+            </div>
+
+            <div class="harmony-name">Triadic</div>
+            <div class="harmony-colors triadic">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+            </div>
+
+            <div class="harmony-name">Clash</div>
+            <div class="harmony-colors clash">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+            </div>
+
+            <div class="harmony-name">Tetradic</div>
+            <div class="harmony-colors tetradic">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+              <div class="color-block color-block-4"></div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="harmony-name">Four Tone</div>
+            <div class="harmony-colors four-tone">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+              <div class="color-block color-block-4"></div>
+            </div>
+
+            <div class="harmony-name">Five Tone</div>
+            <div class="harmony-colors five-tone">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+              <div class="color-block color-block-4"></div>
+              <div class="color-block color-block-5"></div>
+            </div>
+
+            <div class="harmony-name">Six Tone</div>
+            <div class="harmony-colors six-tone">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+              <div class="color-block color-block-4"></div>
+              <div class="color-block color-block-5"></div>
+              <div class="color-block color-block-6"></div>
+            </div>
+
+            <div class="harmony-name">Neutral</div>
+            <div class="harmony-colors neutral">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+              <div class="color-block color-block-4"></div>
+              <div class="color-block color-block-5"></div>
+              <div class="color-block color-block-6"></div>
+            </div>
+
+            <div class="harmony-name">Analogous</div>
+            <div class="harmony-colors analogous">
+              <div class="color-block color-block-1"></div>
+              <div class="color-block color-block-2"></div>
+              <div class="color-block color-block-3"></div>
+              <div class="color-block color-block-4"></div>
+              <div class="color-block color-block-5"></div>
+              <div class="color-block color-block-6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="viewer/js/chroma.js"></script>
+    <script src="viewer/js/library.js"></script>
+    <script src="viewer/js/findbycolor.js"></script>
+    <script src="viewer/js/site.js"></script>
+  </body>
+</html>
